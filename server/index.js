@@ -18,7 +18,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://mern-auth-template-tutorial.netlify.app",
+      // "https://mern-auth-template-tutorial.netlify.app",
     ],
     credentials: true,
   })
@@ -41,4 +41,4 @@ mongoose.connect(
 // set up routes
 
 app.use("/auth", require("./routers/userRouter"));
-app.use("/customer", require("./routers/customerRouter"));
+app.use("/shipment", require("./routers/shipmentRouter"));
