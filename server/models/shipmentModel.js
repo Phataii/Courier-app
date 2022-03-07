@@ -22,8 +22,8 @@ const shipmentSchema = new mongoose.Schema({
   receiver: {
     type: String,
   },
-  Status: {
-    type: Boolean,
+  status: {
+    type: String,
   },
 });
 

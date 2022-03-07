@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function ShipmentsForm({ getShipments }) {
   const [itemName, setItemName] = useState("");
@@ -9,7 +9,7 @@ function ShipmentsForm({ getShipments }) {
   const [date, setDate] = useState("");
   const [receiver, setReceiver] = useState("");
   const [sender, setSender] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("Moving");
 
   async function saveShipment(e) {
     e.preventDefault();
@@ -26,7 +26,7 @@ function ShipmentsForm({ getShipments }) {
         status,
       };
       await axios.post("http://localhost:5000/shipment/", shipmentData);
-      
+
       getShipments();
     } catch (err) {
       console.error(err);
@@ -35,9 +35,12 @@ function ShipmentsForm({ getShipments }) {
 
   return (
     <div>
-      <form onSubmit={saveShipment} className="mt-10 p-40">
+      <form onSubmit={saveShipment} className="mt-10 p-40 ml-32">
+        <h2 className="font-bold text-4xl text-center mb-5">
+          Create a <span style={{ color: "orange" }}>Shipment</span>
+        </h2>
         <input
-          className="w-2/5 h-10 rounded-md p-2 text-md text-gray-600 border-2 border-gray-700"
+          className="w-2/5 h-10 rounded-md shadow-xl border-2 border-gray-700 p-2 mt-1 mb-3 text-gray-900"
           type="text"
           placeholder="Item name"
           onChange={(e) => {
@@ -46,7 +49,7 @@ function ShipmentsForm({ getShipments }) {
           value={itemName}
         />
         <input
-          className="w-2/5 h-10 rounded-md p-2 text-md text-gray-600 border-2 border-gray-700"
+          className="w-2/5 h-10 rounded-md shadow-xl border-2 border-gray-700 p-2 mt-1 mb-3 text-gray-900"
           type="text"
           placeholder="Location"
           onChange={(e) => {
@@ -55,8 +58,8 @@ function ShipmentsForm({ getShipments }) {
           value={location}
         />
         <input
-          className="w-2/5 h-10 rounded-md p-2 text-md text-gray-600 border-2 border-gray-700"
-          type="text"
+          className="w-2/5 h-10 rounded-md shadow-xl border-2 border-gray-700 p-2 mt-1 mb-3 text-gray-900"
+          type="time"
           placeholder="Time"
           onChange={(e) => {
             setTime(e.target.value);
@@ -64,8 +67,8 @@ function ShipmentsForm({ getShipments }) {
           value={time}
         />
         <input
-          className="w-2/5 h-10 rounded-md p-2 text-md text-gray-600 border-2 border-gray-700"
-          type="text"
+          className="w-2/5 h-10 rounded-md shadow-xl border-2 border-gray-700 p-2 mt-1 mb-3 text-gray-900"
+          type="date"
           placeholder="Date"
           onChange={(e) => {
             setDate(e.target.value);
@@ -73,7 +76,7 @@ function ShipmentsForm({ getShipments }) {
           value={date}
         />
         <input
-          className="w-2/5 h-10 rounded-md p-2 text-md text-gray-600 border-2 border-gray-700"
+          className="w-2/5 h-10 rounded-md shadow-xl border-2 border-gray-700 p-2 mt-1 mb-3 text-gray-900"
           type="text"
           placeholder="Receiver"
           onChange={(e) => {
@@ -82,7 +85,7 @@ function ShipmentsForm({ getShipments }) {
           value={receiver}
         />
         <input
-          className="w-2/5 h-10 rounded-md p-2 text-md text-gray-600 border-2 border-gray-700"
+          className="w-2/5 h-10 rounded-md shadow-xl border-2 border-gray-700 p-2 mt-1 mb-3 text-gray-900"
           type="text"
           placeholder="Sender"
           onChange={(e) => {
@@ -90,16 +93,20 @@ function ShipmentsForm({ getShipments }) {
           }}
           value={sender}
         />
-        <input
-          className="w-2/5 h-10 rounded-md p-2 text-md text-gray-600 border-2 border-gray-700"
-          type="text"
-          placeholder="Status"
-          onChange={(e) => {
-            setStatus(e.target.value);
-          }}
+        {/* <select
+          className="w-2/5 h-10 rounded-md shadow-xl border-2 border-gray-700 p-2 mt-1 mb-3 text-gray-900"
           value={status}
-        />
-        <button type="submit" className="bg-orange-400 w-2/5">
+          onChange={(e) => setStatus(e.target.value)}
+        >
+          <option>Status</option>
+          <option>Moving</option>
+          <option>Delivered</option>
+        </select> */}
+
+        <button
+          type="submit"
+          className="bg-orange-400 w-2/5 h-10 rounded-md shadow-xl ml-64"
+        >
           Create Shipment
         </button>
       </form>

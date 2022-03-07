@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const { errorHandler } = require("./middleware/errorHandler");
+require("express-async-errors");
 
 dotenv.config();
 
@@ -24,6 +26,7 @@ app.use(
   })
 );
 
+
 // connect to mongoDB
 
 mongoose.connect(
@@ -42,3 +45,6 @@ mongoose.connect(
 
 app.use("/auth", require("./routers/userRouter"));
 app.use("/shipment", require("./routers/shipmentRouter"));
+
+app.use(errorHandler);
+

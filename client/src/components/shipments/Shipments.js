@@ -2,15 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ShipmentForm from "./ShipmentsForm";
 import ShipmentList from "./ShipmentsList";
-
+import Footer from "../footer";
 function Shipment() {
   const [shipments, setShipments] = useState([]);
-
   async function getShipments() {
-     const shipmentsRes = await axios.get("http://localhost:5000/shipment/");
-    // const customersRes = await axios.get(
-    //   "https://mern-auth-template-tutorial.herokuapp.com/customer/"
-    // );
+    const shipmentsRes = await axios.get("http://localhost:5000/shipment/");
     setShipments(shipmentsRes.data);
   }
 
@@ -20,8 +16,14 @@ function Shipment() {
 
   return (
     <div>
+      <img
+        src={require("../../images/truck.png").default}
+        alt="ETH"
+        className="w-screen h-80"
+      />
       <ShipmentForm getShipments={getShipments} />
       <ShipmentList shipments={shipments} />
+      <Footer />
     </div>
   );
 }

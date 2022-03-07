@@ -17,7 +17,7 @@ function LogOutBtn() {
     history.push("/");
   }
 
-  return <button onClick={logOut}>Log out</button>;
+  return <button onClick={logOut} className="text-white border border-orange-400 p-1 hover:bg-orange-400">Log out</button>;
 }
 
 export default LogOutBtn;

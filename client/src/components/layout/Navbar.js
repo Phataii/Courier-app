@@ -8,7 +8,10 @@ function Navbar() {
 
   return (
     <div className="flex justify-around bg-transaparent absolute h-20 w-full">
-      {/* <h1 className="uppercase font-bold text-2xl text-white text-center border border-white mt-5 p-96">IMPACT SAFEWAY<br/> DELIVERY</h1> */}
+      <h1 className="uppercase font-bold text-2xl text-white text-center border border-white mt-5 p-5 h-full">
+        IMPACT <span style={{ color: "orange" }}>SAFEWAY</span>
+        <br /> DELIVERY
+      </h1>
       <div className="md:mt-5">
         <svg
           class="w-10 h-10 md:hidden mt-5 cursor-pointer"
@@ -40,7 +43,9 @@ function Navbar() {
         <span className="ml-10 font-bold text-white">
           <a href="index">CONTACT</a>
         </span>
-        
+        {/* <span className="ml-10 font-bold text-white">
+          <a href="/search">Search</a>
+        </span> */}
       </div>
       <div className="mt-6 w-fit">
         {loggedIn === false && (
