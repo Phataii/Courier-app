@@ -16,19 +16,26 @@ app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));
 
 app.use(express.json());
 app.use(cookieParser());
+
+app.set("trust proxy", 1);
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      // "https://mern-auth-template-tutorial.netlify.app",
-    ],
+    origin: "https://silly-murdock-22f721.netlify.app",
     credentials: true,
   })
 );
-
-
-// connect to mongoDB
-
+// Add Access Control Allow Origin headers
+app.use((req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://silly-murdock-22f721.netlify.app"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 mongoose.connect(
   process.env.MDB_CONNECT,
   {
@@ -47,4 +54,3 @@ app.use("/auth", require("./routers/userRouter"));
 app.use("/shipment", require("./routers/shipmentRouter"));
 
 app.use(errorHandler);
-

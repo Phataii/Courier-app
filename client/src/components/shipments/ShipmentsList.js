@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 function ShipmentsList({ shipments }) {
@@ -11,7 +11,11 @@ function ShipmentsList({ shipments }) {
         <table class="w-full table-auto mb-20 p-10 border-collapse border border-slate-400">
           <thead>
             <tr>
-              <th className="border border-slate-300">Name</th>
+              <th className="border border-slate-300">Item 1</th>
+              <th className="border border-slate-300">Item 2</th>
+              <th className="border border-slate-300">Item 3</th>
+              <th className="border border-slate-300">Item 4</th>
+              <th className="border border-slate-300">Item 5</th>
               <th className="border border-slate-300">Tracking ID</th>
               <th className="border border-slate-300">Location</th>
               <th className="border border-slate-300">Time</th>
@@ -25,7 +29,12 @@ function ShipmentsList({ shipments }) {
           <tbody>
             {shipments.map((item, i) => (
               <tr className="text-center">
-                <td key={i}>{item.itemName}</td>
+                <td key={i}>{item.itemName1}</td>
+                <td key={i}>{item.itemName2}</td>
+                <td key={i}>{item.itemName3}</td>
+                <td key={i}>{item.itemName4}</td>
+                <td key={i}>{item.itemName5}</td>
+
                 <Link key={item._id} to={`/shipment/${item._id}/edit`}>
                   <td key={i} style={{ color: "blue" }}>
                     {item._id}

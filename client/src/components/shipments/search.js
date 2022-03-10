@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Footer from "../footer";
 export default function Search() {
   const [shipments, setShipments] = useState([]);
@@ -12,7 +12,7 @@ export default function Search() {
     e.preventDefault();
     try {
       const res = await axios.get(
-        `http://localhost:5000/shipment/${shipmentId}`
+        `https://iswds.herokuapp.com/shipment/${shipmentId}`
       );
       setShipments(res.data);
       // console.log(res.data);
@@ -66,7 +66,11 @@ export default function Search() {
 
               <tbody>
                 <tr className="text-center">
-                  <td>{shipments.itemName}</td>
+                  <td>{shipments.itemName1}</td>
+                  <td>{shipments.itemName2}</td>
+                  <td>{shipments.itemName3}</td>
+                  <td>{shipments.itemName4}</td>
+                  <td>{shipments.itemName5}</td>
                   <td>{shipments._id}</td>
                   <td>{shipments.location}</td>
                   <td>{shipments.time}</td>

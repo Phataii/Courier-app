@@ -11,13 +11,17 @@ import Search from "../src/components/shipments/search";
 
 function Router() {
   const { loggedIn } = useContext(AuthContext);
-
+  console.log(loggedIn);
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
           <Navbar />
           <Index />
+        </Route>
+        <Route path="/search">
+          {/* <Navbar /> */}
+          <Search />
         </Route>
         {loggedIn === false && (
           <>
@@ -26,10 +30,6 @@ function Router() {
             </Route>
             <Route path="/login">
               <Login />
-            </Route>
-            <Route path="/search">
-              {/* <Navbar /> */}
-              <Search />
             </Route>
           </>
         )}
@@ -51,6 +51,10 @@ function Router() {
 
 const Fake = () => {
   const match = useRouteMatch();
-  return <div>{JSON.stringify(match.params)}</div>;
+  return (
+    <div>
+      <div>name:{JSON.stringify(match.params)}</div>
+    </div>
+  );
 };
 export default Router;
